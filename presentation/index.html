@@ -1,0 +1,251 @@
+<!doctype html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+
+
+		<title>UI Tests as Screenplays - The Next Step</title>
+        <meta name="description" content="UI Tests as Screenplays - The Next Step">
+        <meta name="author" content="Andreas Falk und Stefan Ludwig">
+
+        <link rel="stylesheet" href="css/reveal.css">
+		<link rel="stylesheet" href="css/theme/white.css">
+
+		<!-- Theme used for syntax highlighting of code -->
+		<link rel="stylesheet" href="lib/css/zenburn.css">
+
+        <link rel="stylesheet" href = "http://slidifylibraries2.googlecode.com/git/inst/libraries/widgets/bootstrap/css/bootstrap.css">
+
+
+        <!-- Printing and PDF exports -->
+		<script>
+			var link = document.createElement( 'link' );
+			link.rel = 'stylesheet';
+			link.type = 'text/css';
+			link.href = window.location.search.match( /print-pdf/gi ) ? 'css/print/pdf.css' : 'css/print/paper.css';
+			document.getElementsByTagName( 'head' )[0].appendChild( link );
+		</script>
+	</head>
+	<body>
+		<div class="reveal">
+			<div class="slides">
+
+                <!-- Introduction -->
+                <section data-background="images/background.png" data-background-size="100%">
+                    <div style="color: white">
+                        <br><br>
+                        <h2 style="color: #1a53a1">UI Tests as Screenplays</h2>
+                        <h2 style="color: #1a53a1">The Next Step</h2>
+                        <p style="color: #1a53a1">Stefan Ludwig</p>
+                        <p style="color: #1a53a1">Andreas Falk</p>
+                        <p><small><a style="color: #1c1e20" href="https://github.com/nt-ca-aqe/ws-2017-atd-pageobjects-to-screenplays">https://github.com/nt-ca-aqe/ws-2017-atd-pageobjects-to-screenplays</a></small></p>
+                    </div>
+                </section>
+                <section data-background="images/background.png" data-background-size="100%">
+                    <h4>Agile Quality Engineering:<br> &ldquo;The missing piece in agile development&rdquo;</h4>
+                    <img src="images/puzzle-654957_1920.jpg" class="plain" width="50%">
+                    <p><small><a href="http://www.novatec-gmbh.de">NovaTec Consulting GmbH (Stuttgart/Germany) - http://www.novatec-gmbh.de</a></small></p>
+                </section>
+                <section data-background="images/background.png" data-background-size="100%">
+                    <h3>Stefan Ludwig</h3>
+                    stefan.ludwig@novatec-gmbh.de<br>
+                    <img class="plain" src="images/slu-profile-picture.png" width="50%">
+                </section>
+                <section data-background="images/background.png" data-background-size="100%">
+                    <h3>Andreas Falk</h3>
+                    andreas.falk@novatec-gmbh.de<br>
+                    <img class="plain" src="images/afa-profile-picture.png" width="50%">
+                </section>
+
+                <section>
+                    <section data-background="images/background.png" data-background-size="100%">
+                        <h2>From spaghetti code...</h2>
+                        <img src="images/pasta-503952_1920.jpg" class="plain" width="70%">
+                    </section>
+                    <section data-background="images/background.png" data-background-size="100%">
+                        <pre><code class="java" style="max-height: 570px; height: 570px;" data-trim>
+                            wd.get("https://agiletestingdays.com/");
+                            wd.findElement(By.linkText("Register")).click();
+                            wd.findElement(By.cssSelector(
+                                    "span.col-xs-12.container-selectable")).click();
+                            if (!wd.findElement(By.xpath(
+                             "//select[@id='id_participant-yoga_interest']//option[2]"))
+                             .isSelected()) {
+                              wd.findElement(By.xpath(
+                              "//select[@id='id_participant-yoga_interest']//option[2]"))
+                              .click();
+                            }
+                            wd.findElement(By.id("id_participant-first_name")).click();
+                            wd.findElement(By.id("id_participant-first_name")).clear();
+                            wd.findElement(By.id("id_participant-first_name"))
+                                .sendKeys("Andreas");
+                            wd.findElement(By.id("id_participant-last_name")).click();
+                            wd.findElement(By.id("id_participant-last_name")).clear();
+                            wd.findElement(By.id("id_participant-last_name"))
+                                .sendKeys("Falk");
+                            ...
+                        </code></pre>
+                    </section>
+                </section>
+
+                <!-- Page Objects -->
+
+                <section>
+                    <section data-background="images/background.png" data-background-size="100%">
+                        <h2>...via page objects...</h2>
+                        <img src="images/old-letters-436501_1920.jpg" class="plain" width="70%">
+                    </section>
+                    <section data-background="images/background.png" data-background-size="100%">
+                        <h2>A Page Object</h2>
+                        <img src="images/atd_full_page.png" class="plain">
+                    </section>
+                    <section data-background="images/background.png" data-background-size="100%">
+                        <h2>Page Fragments</h2>
+                        <img src="images/atd_page_fragments.png" class="plain">
+                    </section>
+                    <section>
+                        <h2>Login Page</h2>
+                        <pre><code class="java" data-trim style="max-height: 550px; height: 550px;">
+                            @DefaultUrl("https://agiletestingdays.com/login")
+                            public class LoginPage extends PageObject {
+                                @FindBy(name = "username")
+                                private WebElement username;
+                                @FindBy(name = "password")
+                                private WebElement password;
+                                @FindBy(css = "input[type=submit]")
+                                private WebElement loginButton;
+
+                                public AuthenticatedHomePage loginAs(
+                                        String username, String password) {
+                                    this.username.sendKeys(username);
+                                    this.password.sendKeys(password);
+                                    this.loginButton.submit();
+                                    return switchToPage(AuthenticatedHomePage.class);
+                                }
+
+                                public LoginPage loginAsExpectingFailure(
+                                        String username, String password) {...}
+                            }
+                        </code></pre>
+                    </section>
+                    <section>
+                        <h2>Login Test</h2>
+                        <pre><code class="java" data-trim style="max-height: 550px; height: 550px;">
+                            @RunWith(SerenityRunner.class)
+                            public class LoginTest {
+
+                                @Managed(driver = "chrome")
+                                private WebDriver browser;
+
+                                LoginPage loginPage;
+
+                                @Test
+                                public void verifyLoginFailure() {
+                                    loginPage.open();
+                                    LoginPage loginPageWithError = this.loginPage
+                                        .loginAsExpectingFailure("dummy", "invalidpwd");
+                                    assertThat(loginPageWithError...)
+                                }
+
+                                @Test
+                                public void verifyLoginSuccess() {...}
+                            }
+                        </code></pre>
+                    </section>
+                </section>
+
+                <!-- ScreenPlay -->
+
+                <section>
+                    <section data-background="images/background.png" data-background-size="100%">
+                        <h2>...to screenplays</h2>
+                        <img src="images/clapper-board-152088.png" class="plain" width="40%">
+                    </section>
+                    <section>
+                        <h2>SOLID</h2>
+                        <p data-autoslide="2000" class="fragment" style="color: darkblue"><strong style="font-size: 1.5em">S</strong>ingle Responsibility Principle</p>
+                        <p data-autoslide="2000" class="fragment" style="color: darkblue"><strong style="font-size: 1.5em">O</strong>pen/Closed Principle</p>
+                        <p data-autoslide="2000" class="fragment" style="color: gray"><strong style="font-size: 1.5em">L</strong>iskov's Substitution Principle</p>
+                        <p data-autoslide="2000" class="fragment" style="color: gray"><strong style="font-size: 1.5em">I</strong>nterface Segregation Principle</p>
+                        <p data-autoslide="0" class="fragment" style="color: gray"><strong style="font-size: 1.5em">D</strong>ependency Inversion Principle</p>
+                    </section>
+                    <section data-background="images/background.png" data-background-size="100%">
+                        <h2>Page Object Pattern</h2>
+                        <h4>Breaks...</h4>
+                        <h4>...Single Responsibility Principle</h4>
+                        <h4>...Open-Closed Principle</h4>
+                    </section>
+                    <section data-background="images/background.png" data-background-size="100%">
+                        <h2>The Screenplay</h2>
+                        <pre><code class="java" data-trim>
+                            Actor joe = Actor.named("Joe").can(Login.with(User.JOE));
+
+                            joe.can(BrowseTheWeb.with(theBrowser))
+
+                            givenThat(joe).wasAbleTo(openTheApplication());
+
+                            when(joe)
+                              .attemptsTo(registerAndLogin())
+                              .then(joe).should(see(theLogoutButton));
+                        </code></pre>
+                    </section>
+                </section>
+
+                <!-- The end -->
+                <section data-background="images/background.png" data-background-size="100%">
+                    <h1>Q&A</h1>
+                    <p>http://www.novatec-gmbh.de</br>
+                    http://blog.novatec-gmbh.de</p>
+                    <p>stefan.ludwig@novatec-gmbh.de<br>
+                    andreas.falk@novatec-gmbh.de</p>
+                    <p>@NT_AQE</p>
+                </section>
+                <section data-background="images/background.png" data-background-size="100%">
+                    <h2>References</h2>
+                    <small>
+                        <ul>
+                            <li><a href="https://martinfowler.com/bliki/PageObject.html/">Page Object Pattern (https://martinfowler.com/bliki/PageObject.html)</a></li>
+                            <li><a href="https://www.infoq.com/articles/Beyond-Page-Objects-Test-Automation-Serenity-Screenplay">Screenplay Pattern (https://www.infoq.com/articles/Beyond-Page-Objects-Test-Automation-Serenity-Screenplay)</a></li>
+                            <li><a href="https://en.wikipedia.org/wiki/SOLID_(object-oriented_design)">SOLID Principles (https://en.wikipedia.org/wiki/SOLID_(object-oriented_design)</a></li>
+                            <li><a href="https://github.com/nt-ca-aqe/ws-2017-atd-pageobjects-to-screenplays">Sources and Presentation (https://github.com/nt-ca-aqe/ws-2017-atd-pageobjects-to-screenplays)</a></li>
+                        </ul>
+                        <p>All images used are either screenshots or taken from <a href="https://pixabay.com/">Pixabay</a> (published under <a href="http://creativecommons.org/publicdomain/zero/1.0/deed.en">Creative Commons CC0 license).</a></p>
+                        All used logos are trademarks of corresponding companies
+                    </small>
+                </section>
+			</div>
+		</div>
+
+		<script src="lib/js/head.min.js"></script>
+		<script src="js/reveal.js"></script>
+
+
+		<script>
+			Reveal.initialize({
+                controls: true,
+                progress: true,
+                history: true,
+                center: true,
+                pdfMaxPagesPerSlide: 1,
+                allottedTime: 45 * 60 * 1000, // 45 minutes
+
+                transition: 'slide', // none/fade/slide/convex/concave/zoom
+				dependencies: [
+                    { src: 'lib/js/classList.js', condition: function() { return !document.body.classList; } },
+                    { src: 'plugin/markdown/marked.js' },
+					{ src: 'plugin/markdown/markdown.js' },
+                    { src: 'plugin/print-pdf/print-pdf.js' },
+                    { src: 'plugin/zoom-js/zoom.js', async: true },
+                    { src: 'plugin/notes/notes.js', async: true },
+                    { src: 'plugin/tagcloud/tagcloud.js', async: true },
+                    { src: 'plugin/elapsed-time-bar/elapsed-time-bar.js'},
+					{ src: 'plugin/highlight/highlight.js', async: true, callback: function() {
+					    hljs.initHighlightingOnLoad(); }
+					}
+				]
+			});
+            Reveal.configure({ slideNumber: 'c/t' });
+		</script>
+	</body>
+</html>
