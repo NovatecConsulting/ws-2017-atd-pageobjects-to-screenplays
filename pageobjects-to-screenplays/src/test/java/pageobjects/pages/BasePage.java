@@ -33,6 +33,10 @@ public abstract class BasePage<T extends BasePage> {
         assertThatCorrectPageIsDisplayed();
     }
 
+    /**
+     * Should implement some logic to verify that the correct page is currently displayed.
+     * Is invoked right after the page object was initialized.
+     */
     protected abstract void assertThatCorrectPageIsDisplayed();
 
     /**
@@ -61,7 +65,7 @@ public abstract class BasePage<T extends BasePage> {
     private WebElement withWait(String name, Supplier<Optional<WebElement>> webElementSupplier)
         throws ConditionTimeoutException {
         await("waiting for <" + name + "> to be found")//
-            .atMost(ONE_SECOND)//
+            .atMost(TWO_SECONDS)//
             .pollDelay(50L, TimeUnit.MILLISECONDS)//
             .until(() -> webElementSupplier.get().isPresent());
         return webElementSupplier.get().orElseThrow(IllegalStateException::new);

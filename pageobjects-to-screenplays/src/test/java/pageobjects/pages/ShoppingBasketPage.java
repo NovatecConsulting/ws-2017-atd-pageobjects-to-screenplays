@@ -29,7 +29,6 @@ public class ShoppingBasketPage extends JuiceShopPage<ShoppingBasketPage> {
 
     @Override
     protected void assertThatCorrectPageIsDisplayed() {
-        // TODO: this is also matched by the header button
         WebElement headline = findByCss("Basket Headline", "span[translate=TITLE_BASKET]");
         assertThat(headline.isDisplayed()).isTrue();
     }

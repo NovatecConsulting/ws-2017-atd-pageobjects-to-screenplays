@@ -15,7 +15,7 @@ import common.elements.TextField;
  */
 public abstract class JuiceShopPage<T extends JuiceShopPage> extends BasePage<T> {
 
-    public JuiceShopPage(WebDriver webDriver) {
+    protected JuiceShopPage(WebDriver webDriver) {
         super(webDriver);
     }
 
@@ -34,14 +34,14 @@ public abstract class JuiceShopPage<T extends JuiceShopPage> extends BasePage<T>
     }
 
     private Button findLoginButton() {
-        return findOptionalLoginButton().get();
+        return findOptionalLoginButton().orElseThrow(IllegalStateException::new);
     }
 
     private Optional<Button> findOptionalLoginButton() {
         return findOptionallyByCss("PerformLoginTask Button", "span[translate=TITLE_LOGIN]").map(Button::new);
     }
 
-    public Button findLogoutButton() {
+    private Button findLogoutButton() {
         return new Button(findByCss("Logout Button", "span[translate=TITLE_LOGOUT]"));
     }
 
