@@ -1,7 +1,7 @@
 package screenplays.consequences;
 
 import common.elements.WebElementWrapper;
-import common.screenplay.abilities.Locator;
+import screenplays.base.abilities.Locator;
 
 import java.util.Optional;
 import java.util.function.Function;

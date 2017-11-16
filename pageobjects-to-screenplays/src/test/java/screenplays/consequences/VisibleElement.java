@@ -1,9 +1,9 @@
 package screenplays.consequences;
 
 import common.elements.WebElementWrapper;
-import common.screenplay.Actor;
-import common.screenplay.abilities.Browser;
-import common.screenplay.abilities.Locator;
+import screenplays.base.Actor;
+import screenplays.base.abilities.Browser;
+import screenplays.base.abilities.Locator;
 import org.awaitility.Awaitility;
 import org.awaitility.Duration;
 

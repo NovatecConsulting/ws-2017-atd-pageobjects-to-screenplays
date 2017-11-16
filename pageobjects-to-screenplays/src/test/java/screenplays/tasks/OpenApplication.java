@@ -2,8 +2,8 @@ package screenplays.tasks;
 
 import static screenplays.pages.AnyPage.assertThatAnyPageIsDisplayed;
 
-import common.screenplay.Actor;
-import common.screenplay.abilities.Browser;
+import screenplays.base.Actor;
+import screenplays.base.abilities.Browser;
 
 
 /**

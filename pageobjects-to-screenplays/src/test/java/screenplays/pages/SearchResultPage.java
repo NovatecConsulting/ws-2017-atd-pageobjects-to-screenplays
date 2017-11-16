@@ -12,8 +12,8 @@ import org.openqa.selenium.WebElement;
 import common.elements.Button;
 import common.elements.Text;
 import common.elements.WebElementWrapper;
-import common.screenplay.abilities.Browser;
-import common.screenplay.abilities.Locator;
+import screenplays.base.abilities.Browser;
+import screenplays.base.abilities.Locator;
 
 
 public class SearchResultPage {

@@ -4,8 +4,8 @@ import static screenplays.pages.AnyPage.loginMenuAction;
 import static screenplays.pages.AnyPage.logoutMenuAction;
 import static screenplays.pages.LoginPage.assertThatLoginPageIsDisplayed;
 
-import common.screenplay.Actor;
-import common.screenplay.abilities.Browser;
+import screenplays.base.Actor;
+import screenplays.base.abilities.Browser;
 
 
 /**

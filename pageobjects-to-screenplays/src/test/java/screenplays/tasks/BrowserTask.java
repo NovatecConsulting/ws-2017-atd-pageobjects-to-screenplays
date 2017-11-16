@@ -1,9 +1,9 @@
 package screenplays.tasks;
 
-import common.screenplay.Actor;
-import common.screenplay.Task;
-import common.screenplay.abilities.BrowseTheWeb;
-import common.screenplay.abilities.Browser;
+import screenplays.base.Actor;
+import screenplays.base.Task;
+import screenplays.base.abilities.BrowseTheWeb;
+import screenplays.base.abilities.Browser;
 
 
 public abstract class BrowserTask implements Task {

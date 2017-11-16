@@ -1,4 +1,4 @@
-package common.screenplay;
+package screenplays.base;
 
 import java.util.Arrays;
 import java.util.HashMap;

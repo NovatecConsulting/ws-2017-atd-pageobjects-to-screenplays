@@ -1,8 +1,9 @@
-package common.screenplay.abilities;
+package screenplays.base.abilities;
 
 
-import common.screenplay.Ability;
-import common.screenplay.Actor;
+import screenplays.base.Ability;
+import screenplays.base.Actor;
+
 
 /**
  * Ability to browse the web.

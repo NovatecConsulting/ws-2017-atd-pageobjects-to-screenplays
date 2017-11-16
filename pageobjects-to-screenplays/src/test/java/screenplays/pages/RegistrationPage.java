@@ -9,8 +9,8 @@ import common.elements.Button;
 import common.elements.PasswordField;
 import common.elements.SelectionField;
 import common.elements.TextField;
-import common.screenplay.abilities.Browser;
-import common.screenplay.abilities.Locator;
+import screenplays.base.abilities.Browser;
+import screenplays.base.abilities.Locator;
 
 
 /**

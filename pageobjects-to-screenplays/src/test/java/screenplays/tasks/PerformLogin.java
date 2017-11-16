@@ -1,9 +1,9 @@
 package screenplays.tasks;
 
 import common.User;
-import common.screenplay.Actor;
-import common.screenplay.abilities.Browser;
-import common.screenplay.abilities.Login;
+import screenplays.base.Actor;
+import screenplays.base.abilities.Browser;
+import screenplays.base.abilities.Login;
 
 import static org.assertj.core.api.Assertions.assertThat;
 import static screenplays.pages.AnyPage.logoutMenuAction;

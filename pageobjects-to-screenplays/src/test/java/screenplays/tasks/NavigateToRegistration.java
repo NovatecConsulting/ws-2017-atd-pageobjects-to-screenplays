@@ -3,8 +3,8 @@ package screenplays.tasks;
 import static screenplays.pages.LoginPage.registrationLink;
 import static screenplays.pages.RegistrationPage.assertThatRegistrationPageIsDisplayed;
 
-import common.screenplay.Actor;
-import common.screenplay.abilities.Browser;
+import screenplays.base.Actor;
+import screenplays.base.abilities.Browser;
 
 
 /**

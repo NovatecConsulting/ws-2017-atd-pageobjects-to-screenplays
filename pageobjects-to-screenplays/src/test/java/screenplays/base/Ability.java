@@ -1,5 +1,5 @@
 
-package common.screenplay;
+package screenplays.base;
 
 import java.util.function.Supplier;
 

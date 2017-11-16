@@ -6,7 +6,7 @@ import org.junit.jupiter.api.BeforeAll;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 
-import common.screenplay.abilities.Browser;
+import screenplays.base.abilities.Browser;
 
 
 class BaseStory {

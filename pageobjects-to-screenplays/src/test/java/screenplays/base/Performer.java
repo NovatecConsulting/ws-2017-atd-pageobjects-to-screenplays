@@ -1,4 +1,4 @@
-package common.screenplay;
+package screenplays.base;
 
 public interface Performer {
 

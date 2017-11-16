@@ -1,9 +1,9 @@
 package screenplays.consequences;
 
-import common.screenplay.Actor;
-import common.screenplay.Consequence;
-import common.screenplay.abilities.BrowseTheWeb;
-import common.screenplay.abilities.Browser;
+import screenplays.base.Actor;
+import screenplays.base.Consequence;
+import screenplays.base.abilities.BrowseTheWeb;
+import screenplays.base.abilities.Browser;
 
 
 public abstract class BrowserConsequence implements Consequence<Actor> {

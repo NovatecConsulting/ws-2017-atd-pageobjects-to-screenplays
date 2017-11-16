@@ -12,8 +12,8 @@ import static screenplays.pages.SearchResultPage.productRows;
 import java.util.List;
 import java.util.Set;
 
-import common.screenplay.Actor;
-import common.screenplay.abilities.Browser;
+import screenplays.base.Actor;
+import screenplays.base.abilities.Browser;
 import screenplays.pages.SearchResultPage.ProductRow;
 
 

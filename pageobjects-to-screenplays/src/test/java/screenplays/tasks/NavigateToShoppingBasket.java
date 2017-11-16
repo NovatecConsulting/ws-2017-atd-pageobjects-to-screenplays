@@ -2,8 +2,8 @@ package screenplays.tasks;
 
 import static screenplays.pages.AnyPage.basketMenuAction;
 
-import common.screenplay.Actor;
-import common.screenplay.abilities.Browser;
+import screenplays.base.Actor;
+import screenplays.base.abilities.Browser;
 import screenplays.pages.ShoppingBasketPage;
 
 

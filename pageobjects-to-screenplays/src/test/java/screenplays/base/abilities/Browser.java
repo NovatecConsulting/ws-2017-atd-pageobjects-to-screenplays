@@ -1,4 +1,4 @@
-package common.screenplay.abilities;
+package screenplays.base.abilities;
 
 import java.util.Optional;
 import java.util.function.Function;

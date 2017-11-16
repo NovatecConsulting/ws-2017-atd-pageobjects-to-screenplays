@@ -1,4 +1,4 @@
-package common.screenplay.abilities;
+package screenplays.base.abilities;
 
 import static org.awaitility.Awaitility.await;
 import static org.awaitility.Duration.TWO_SECONDS;

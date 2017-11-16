@@ -3,8 +3,8 @@ package screenplays.pages;
 import common.elements.Button;
 import common.elements.Text;
 import common.elements.TextField;
-import common.screenplay.abilities.Browser;
-import common.screenplay.abilities.Locator;
+import screenplays.base.abilities.Browser;
+import screenplays.base.abilities.Locator;
 
 import java.util.Optional;
 import java.util.function.Function;
