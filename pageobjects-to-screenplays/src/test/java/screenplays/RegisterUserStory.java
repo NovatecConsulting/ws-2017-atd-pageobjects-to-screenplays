@@ -2,7 +2,7 @@ package screenplays;
 
 import static common.screenplay.GivenWhenThen.givenThat;
 import static common.screenplay.GivenWhenThen.when;
-import static common.screenplay.consequences.WebConsequences.see;
+import static screenplays.consequences.Consequences.see;
 import static screenplays.pages.AnyPage.logoutMenuAction;
 import static screenplays.tasks.Tasks.login;
 import static screenplays.tasks.Tasks.openTheApplication;
@@ -35,7 +35,9 @@ class RegisterUserStory extends BaseStory {
     void registerNewUserAndLogin() {
         givenThat(bob).wasAbleTo(openTheApplication());
         when(bob) //
-            .attemptsTo(register(), login()) //
+            .attemptsTo(register()) //
+            .and() //
+            .attemptsTo(login()) //
             .then(bob).should(see(logoutMenuAction()));
     }
 

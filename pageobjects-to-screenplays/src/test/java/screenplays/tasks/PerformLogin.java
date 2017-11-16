@@ -1,15 +1,13 @@
 package screenplays.tasks;
 
-import static org.assertj.core.api.Assertions.assertThat;
-import static screenplays.pages.AnyPage.logoutMenuAction;
-import static screenplays.pages.LoginPage.emailField;
-import static screenplays.pages.LoginPage.loginButton;
-import static screenplays.pages.LoginPage.passwordField;
-
 import common.User;
 import common.screenplay.Actor;
 import common.screenplay.abilities.Browser;
 import common.screenplay.abilities.Login;
+
+import static org.assertj.core.api.Assertions.assertThat;
+import static screenplays.pages.AnyPage.logoutMenuAction;
+import static screenplays.pages.LoginPage.*;
 
 
 /**

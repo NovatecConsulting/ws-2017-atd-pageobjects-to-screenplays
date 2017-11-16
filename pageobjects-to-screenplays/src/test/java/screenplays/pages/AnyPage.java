@@ -1,15 +1,15 @@
 package screenplays.pages;
 
-import static org.assertj.core.api.Assertions.assertThat;
-
-import java.util.Optional;
-import java.util.function.Function;
-
 import common.elements.Button;
 import common.elements.Text;
 import common.elements.TextField;
 import common.screenplay.abilities.Browser;
 import common.screenplay.abilities.Locator;
+
+import java.util.Optional;
+import java.util.function.Function;
+
+import static org.assertj.core.api.Assertions.assertThat;
 
 
 public class AnyPage {
