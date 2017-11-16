@@ -17,9 +17,10 @@ repositories {
 }
 
 dependencies {
+    testCompile("org.seleniumhq.selenium:selenium-java:3.6.0")
+    testCompile("org.assertj:assertj-core:3.8.0")
+    testCompile("org.awaitility:awaitility:3.0.0")
     testCompile("org.junit.jupiter:junit-jupiter-api:5.0.1")
+
     testRuntime("org.junit.jupiter:junit-jupiter-engine:5.0.1")
-    testRuntime("org.seleniumhq.selenium:selenium-java:3.6.0")
-    testRuntime("org.assertj:assertj-core:3.8.0")
-    testRuntime("org.awaitility:awaitility:3.0.0")
 }
