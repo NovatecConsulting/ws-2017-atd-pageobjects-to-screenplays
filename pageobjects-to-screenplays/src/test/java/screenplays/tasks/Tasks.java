@@ -22,6 +22,10 @@ public class Tasks {
         return new PerformLogin();
     }
 
+    public static PerformLoginAttack loginByUsingSqlInjection() {
+        return new PerformLoginAttack();
+    }
+
     public static PerformRegistration register() {
         return new PerformRegistration();
     }

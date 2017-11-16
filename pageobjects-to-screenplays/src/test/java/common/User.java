@@ -7,7 +7,7 @@ public class User {
 
     public static final User JOE = new User("Joe", "joe@example.com", "password", 1, "test");
     public static final User UNKNOWN = new User("Unknown User", "noone@example.com", "unknown", 1, "unknown");
-    public static final User ATTACKER = new User("Attacker", "admin@juice-sh.op' or 1=1;--", "123", 1, "test");
+    public static final User ATTACKER = new User("Attacker", "admin@juice-sh.op", "any", 1, "test");
 
     public static final User NEW_USER = new User(//
         "New User",//

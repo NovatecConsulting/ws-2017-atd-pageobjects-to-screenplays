@@ -4,11 +4,11 @@ import common.elements.WebElementWrapper;
 import common.screenplay.Actor;
 import common.screenplay.abilities.Browser;
 import common.screenplay.abilities.Locator;
+import org.awaitility.Awaitility;
+import org.awaitility.Duration;
 
 import java.util.Optional;
 import java.util.function.Function;
-
-import static org.assertj.core.api.Assertions.assertThat;
 
 public class NotVisibleElement<T extends WebElementWrapper> extends BrowserConsequence {
 
@@ -20,13 +20,13 @@ public class NotVisibleElement<T extends WebElementWrapper> extends BrowserConse
 
     @Override
     protected void assertConsequence(Actor actor, Browser browser) {
-        boolean visible = this.function.apply(browser.getLocator())
-                .map(WebElementWrapper::isDisplayed) //
-                .orElse(false);
 
-        assertThat(visible) //
-            .describedAs("Element should not be visible") //
-            .isFalse();
+        Awaitility
+                .await("Element should not be visible")
+                .atMost(Duration.TWO_SECONDS)
+                .pollDelay(Duration.FIVE_HUNDRED_MILLISECONDS)
+                .until(() -> !this.function.apply(
+                        browser.getLocator()).map(WebElementWrapper::isDisplayed).orElse(false));
     }
 
 }

@@ -17,20 +17,20 @@ import static screenplays.tasks.Tasks.*;
 
 class AttackerUserStory extends BaseStory {
 
-    private Actor attacker = Actor.named("Attacker").can(Login.with(User.ATTACKER));
+    private Actor theAttacker = Actor.named("Attacker").can(Login.with(User.ATTACKER));
 
     @BeforeEach
     void userCanBrowseTheWeb() {
-        attacker.can(BrowseTheWeb.with(theBrowser));
+        theAttacker.can(BrowseTheWeb.with(theBrowser));
     }
 
     @Test
     @DisplayName("login into the shop as administrator using sql injection")
     void attackToLoginAsAdministrator() {
-        givenThat(attacker).wasAbleTo(openTheApplication());
-        when(attacker) //
-            .attemptsTo(login()) //
-            .then(attacker).should(notSee(logoutMenuAction()));
+        givenThat(theAttacker).wasAbleTo(openTheApplication());
+        when(theAttacker) //
+            .attemptsTo(loginByUsingSqlInjection()) //
+            .then(theAttacker).should(notSee(logoutMenuAction()));
     }
 
 }
