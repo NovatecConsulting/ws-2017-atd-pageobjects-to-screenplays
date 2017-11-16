@@ -1,6 +1,7 @@
 package screenplays;
 
 import static common.screenplay.GivenWhenThen.givenThat;
+import static common.screenplay.GivenWhenThen.then;
 import static common.screenplay.GivenWhenThen.when;
 import static screenplays.consequences.Consequences.see;
 import static screenplays.pages.AnyPage.logoutMenuAction;
@@ -37,17 +38,16 @@ class RegisterUserStory extends BaseStory {
         when(bob) //
             .attemptsTo(register()) //
             .and() //
-            .attemptsTo(login()) //
-            .then(bob).should(see(logoutMenuAction()));
+            .attemptsTo(login());
+        then(bob).should(see(logoutMenuAction()));
     }
 
     @Test
     @Disabled("should only be used to create user if application was reset")
     void createUserNamedJoe() {
         givenThat(joe).wasAbleTo(openTheApplication());
-        when(joe) //
-            .attemptsTo(register(), login()) //
-            .then(joe).should(see(logoutMenuAction()));
+        when(joe).attemptsTo(register(), login());
+        then(joe).should(see(logoutMenuAction()));
     }
 
 }
