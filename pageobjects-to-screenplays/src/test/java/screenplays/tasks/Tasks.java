@@ -14,28 +14,8 @@ public class Tasks {
         return new NavigateToRegistration();
     }
 
-    public static NavigateToShoppingBasket navigateToShoppingBasket() {
-        return new NavigateToShoppingBasket();
-    }
-
     public static PerformLogin login() {
         return new PerformLogin();
-    }
-
-    public static PerformLoginAttack loginByUsingSqlInjection() {
-        return new PerformLoginAttack();
-    }
-
-    public static PerformRegistration register() {
-        return new PerformRegistration();
-    }
-
-    public static PerformSearch searchFor(String query) {
-        return new PerformSearch(query);
-    }
-
-    public static PerformAddItemsToBasket addItemsToBasket(String... itemNames) {
-        return new PerformAddItemsToBasket(itemNames);
     }
 
 }

@@ -1,22 +1,12 @@
 package screenplays.consequences;
 
-import common.elements.WebElementWrapper;
-import screenplays.base.abilities.Locator;
-
 import java.util.Optional;
 import java.util.function.Function;
 
-public class Consequences {
+import common.elements.WebElementWrapper;
+import screenplays.base.abilities.Locator;
 
-    /**
-     * Checks for given items in shopping basket.
-     *
-     * @param itemNames list of item names
-     * @return the shopping basket consequence
-     */
-    public static ItemsInShoppingBasket haveItemsInShoppingBasket(String... itemNames) {
-        return new ItemsInShoppingBasket(itemNames);
-    }
+public class Consequences {
 
     /**
      * Checks that the actor can see a web element (is visible)

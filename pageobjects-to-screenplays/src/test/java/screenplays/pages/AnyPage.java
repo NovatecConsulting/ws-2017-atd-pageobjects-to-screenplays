@@ -1,15 +1,14 @@
 package screenplays.pages;
 
-import common.elements.Button;
-import common.elements.Text;
-import common.elements.TextField;
-import screenplays.base.abilities.Browser;
-import screenplays.base.abilities.Locator;
+import static org.assertj.core.api.Assertions.assertThat;
 
 import java.util.Optional;
 import java.util.function.Function;
 
-import static org.assertj.core.api.Assertions.assertThat;
+import common.elements.Button;
+import common.elements.Text;
+import screenplays.base.abilities.Browser;
+import screenplays.base.abilities.Locator;
 
 
 public class AnyPage {
@@ -23,18 +22,6 @@ public class AnyPage {
     public static Function<Locator, Optional<Button>> logoutMenuAction() {
         return locator -> locator //
             .findByCss("Logout Menu Action", "span[translate=TITLE_LOGOUT]") //
-            .map(Button::new);
-    }
-
-    public static Function<Locator, Optional<TextField>> searchQueryField() {
-        return locator -> locator //
-            .findByCss("Search Query Field", "input[ng-model=searchQuery]") //
-            .map(TextField::new);
-    }
-
-    public static Function<Locator, Optional<Button>> basketMenuAction() {
-        return locator -> locator //
-            .findByCss("Basket Menu Action", "span[translate=TITLE_BASKET]") //
             .map(Button::new);
     }
 
