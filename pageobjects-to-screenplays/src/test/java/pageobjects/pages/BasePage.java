@@ -2,7 +2,6 @@ package pageobjects.pages;
 
 import static org.awaitility.Awaitility.await;
 import static org.awaitility.Awaitility.waitAtMost;
-import static org.awaitility.Duration.ONE_SECOND;
 import static org.awaitility.Duration.TWO_SECONDS;
 
 import java.util.List;

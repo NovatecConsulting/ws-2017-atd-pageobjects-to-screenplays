@@ -26,8 +26,7 @@ class ShoppingBasketUiTest extends BaseUiTest {
             .addToBasket("Apple Pomace")//
             .addToBasket("Apple Juice (1000ml)");
 
-        List<String> productsInBasket = searchResultPage//
-            .goToBasket()//
+        List<String> productsInBasket = searchResultPage.goToBasket()//
             .waitUntil(page -> page.getNumberOfItems() >= 2)//
             .getNamesOfProductsInBasket();
 
