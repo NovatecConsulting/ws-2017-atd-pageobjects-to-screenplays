@@ -190,6 +190,26 @@
                               .then(joe).should(see(theLogoutButton));
                         </code></pre>
                     </section>
+                    <section data-background="images/background.png" data-background-size="100%">
+                        <h2>Personas as Actors</h2>
+                        <h4>Customer</h4>
+                        <h4>Administrator</h4>
+                        <h4>Employee</h4>
+                        <h4>Attacker</h4>
+                        <h4>...</h4>
+                    </section>
+                    <section data-background="images/background.png" data-background-size="100%">
+                        <h2>Screenplays for AbUser Stories</h2>
+                        <pre><code class="java" data-trim>
+                            ...
+                            givenThat(theAttacker).wasAbleTo(openTheApplication());
+
+                            when(theAttacker)
+                              .attemptsTo(loginByUsingSqlInjection())
+                              .then(theAttacker).should(not(see(theLogoutButton)));
+                        </code></pre>
+                        <p><img src="images/hacker.jpg" class="plain" width="30%"></p>
+                    </section>
                 </section>
 
                 <!-- The end -->
