@@ -57,7 +57,21 @@
                     andreas.falk@novatec-gmbh.de<br>
                     <img class="plain" src="images/afa-profile-picture.png" width="50%">
                 </section>
-
+                <section data-background="images/background.png" data-background-size="100%">
+                    <h2>Hands-On Requirements</h2>
+                    <p>WIFI - Hopefully it works :-)</p>
+                    <p>Java 8 SDK</p>
+                    <p>A Java IDE (IntelliJ, Eclipse, NetBeans, ...)</p>
+                    <p>Git</p>
+                    <p><a href="https://github.com/nt-ca-aqe/ws-2017-atd-pageobjects-to-screenplays">https://github.com/nt-ca-aqe/ws-2017-atd-pageobjects-to-screenplays</a></p>
+                </section>
+                <section data-background="images/background.png" data-background-size="100%">
+                    <h2>Our Testing Target</h2>
+                    <h4>Juice Shop - An intentionally unsecure web app</h4>
+                    <p><a href="https://atd-juiceshop.herokuapp.com">https://atd-juiceshop.herokuapp.com</a></p>
+                    <p><img src="images/juice_shop.png" class="plain" width="70%"></p>
+                    <p><small><a href="https://github.com/bkimminich/juice-shop">https://github.com/bkimminich/juice-shop</a></small></p>
+                </section>
                 <section>
                     <section data-background="images/background.png" data-background-size="100%">
                         <h2>From spaghetti code...</h2>
@@ -203,10 +217,9 @@
                         <pre><code class="java" data-trim>
                             ...
                             givenThat(theAttacker).wasAbleTo(openTheApplication());
-
                             when(theAttacker)
-                              .attemptsTo(loginByUsingSqlInjection())
-                              .then(theAttacker).should(not(see(theLogoutButton)));
+                                .attemptsTo(loginByUsingSqlInjection())
+                                .then(theAttacker).should(notSee(logoutMenuAction()));
                         </code></pre>
                         <p><img src="images/hacker.jpg" class="plain" width="30%"></p>
                     </section>
