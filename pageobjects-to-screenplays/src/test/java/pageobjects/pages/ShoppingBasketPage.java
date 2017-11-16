@@ -30,7 +30,9 @@ public class ShoppingBasketPage extends JuiceShopPage<ShoppingBasketPage> {
     @Override
     protected void assertThatCorrectPageIsDisplayed() {
         WebElement headline = findByCss("Basket Headline", "span[translate=TITLE_BASKET]");
-        assertThat(headline.isDisplayed()).isTrue();
+        assertThat(headline.isDisplayed())//
+            .describedAs("Shopping Basket Page Headline is displayed")//
+            .isTrue();
     }
 
     public ShoppingBasketPage deleteFromBasket(String productName) {

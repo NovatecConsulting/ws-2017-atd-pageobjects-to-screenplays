@@ -38,7 +38,7 @@ public abstract class JuiceShopPage<T extends JuiceShopPage> extends BasePage<T>
     }
 
     private Optional<Button> findOptionalLoginButton() {
-        return findOptionallyByCss("PerformLoginTask Button", "span[translate=TITLE_LOGIN]").map(Button::new);
+        return findOptionallyByCss("Login Button", "span[translate=TITLE_LOGIN]").map(Button::new);
     }
 
     private Button findLogoutButton() {

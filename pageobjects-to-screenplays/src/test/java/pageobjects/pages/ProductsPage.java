@@ -20,7 +20,9 @@ public class ProductsPage extends JuiceShopPage<ProductsPage> {
     @Override
     protected void assertThatCorrectPageIsDisplayed() {
         WebElement headline = findByCss("Products Headline", "h3[translate=TITLE_ALL_PRODUCTS]");
-        assertThat(headline.isDisplayed()).isTrue();
+        assertThat(headline.isDisplayed())//
+            .describedAs("Product Page Headline is displayed")//
+            .isTrue();
     }
 
 }

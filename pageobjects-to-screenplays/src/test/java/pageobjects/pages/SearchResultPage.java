@@ -25,7 +25,9 @@ public class SearchResultPage extends JuiceShopPage<SearchResultPage> {
     @Override
     protected void assertThatCorrectPageIsDisplayed() {
         WebElement headline = findByCss("Search Result Headline", "span[translate=TITLE_SEARCH_RESULTS]");
-        assertThat(headline.isDisplayed()).isTrue();
+        assertThat(headline.isDisplayed())//
+            .describedAs("Search Result Page Headline is displayed")//
+            .isTrue();
     }
 
     /**

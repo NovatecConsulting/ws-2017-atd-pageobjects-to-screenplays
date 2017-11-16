@@ -41,16 +41,6 @@ public abstract class BasePage<T extends BasePage> {
     /**
      * Returns the first found WebElement matching the given CSS Selector. If
      * no WebElement was found, the lookup will be retried up to the configured
-     * timeout. Upon reaching the timeout a ConditionTimeoutException is thrown.
-     * This method will never return null!
-     */
-    protected WebElement findByCss(String name, String selector) {
-        return withWait(name, () -> executeFindByCss(selector));
-    }
-
-    /**
-     * Returns the first found WebElement matching the given CSS Selector. If
-     * no WebElement was found, the lookup will be retried up to the configured
      * timeout. Upon reaching the timeout an empty Optional is returned!
      */
     protected Optional<WebElement> findOptionallyByCss(String name, String selector) {
@@ -59,6 +49,16 @@ public abstract class BasePage<T extends BasePage> {
         } catch (ConditionTimeoutException e) {
             return Optional.empty();
         }
+    }
+
+    /**
+     * Returns the first found WebElement matching the given CSS Selector. If
+     * no WebElement was found, the lookup will be retried up to the configured
+     * timeout. Upon reaching the timeout a ConditionTimeoutException is thrown.
+     * This method will never return null!
+     */
+    protected WebElement findByCss(String name, String selector) {
+        return withWait(name, () -> executeFindByCss(selector));
     }
 
     private WebElement withWait(String name, Supplier<Optional<WebElement>> webElementSupplier)

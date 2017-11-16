@@ -25,7 +25,9 @@ public class RegistrationPage extends JuiceShopPage<RegistrationPage> {
     @Override
     protected void assertThatCorrectPageIsDisplayed() {
         WebElement headline = findByCss("Registration Headline", "h3[translate=TITLE_REGISTRATION]");
-        assertThat(headline.isDisplayed()).isTrue();
+        assertThat(headline.isDisplayed())//
+            .describedAs("Registration Page Headline is displayed")//
+            .isTrue();
     }
 
     /**

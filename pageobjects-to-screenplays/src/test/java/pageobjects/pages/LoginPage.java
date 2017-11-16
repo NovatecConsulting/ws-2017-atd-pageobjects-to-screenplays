@@ -24,8 +24,10 @@ public class LoginPage extends JuiceShopPage<LoginPage> {
 
     @Override
     protected void assertThatCorrectPageIsDisplayed() {
-        WebElement headline = findByCss("PerformLoginTask Headline", "h3[translate=TITLE_LOGIN]");
-        assertThat(headline.isDisplayed()).isTrue();
+        WebElement headline = findByCss("Login Page Headline", "h3[translate=TITLE_LOGIN]");
+        assertThat(headline.isDisplayed())//
+            .describedAs("Login Page Headline is displayed")//
+            .isTrue();
     }
 
     /**
